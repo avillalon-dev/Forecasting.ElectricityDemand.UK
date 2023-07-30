@@ -1,2 +1,3 @@
-# Forecasting.ElectricityDemand.UK
-This repository provides a time-series forecasting approach to predict the electricity demand in the United Kingdom (UK).
+# UK Electricity Demand Forecasting Project
+
+This repository provides a time-series forecasting approach to predict the electricity demand in the United Kingdom (UK). The repository includes various models and techniques specifically designed for forecasting electricity demand, taking into account historical data, seasonal patterns, and other relevant factors. The repository also provides data preprocessing scripts, model evaluation metrics, and example notebooks to guide users in understanding and implementing the forecasting approach. The goal of this repository is to assist researchers, data scientists, and energy professionals in accurately predicting electricity demand in the UK, enabling better planning and decision-making in the energy sector.
