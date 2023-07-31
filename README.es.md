@@ -46,7 +46,9 @@ Para abordar el problema, se utilizó un enfoque de pronóstico de series tempor
 - Modelos de regresión en conjunto: Extreme Gradient Boosting (XGB).
 - Modelos aditivos generalizados: Prophet.
 - Redes neuronales: Perceptrón Multicapa Gaussiano (GMLP).
+
 Se tuvieron en cuenta las suposiciones de cada modelo y su relevancia para el problema. Después de estudiar las soluciones proporcionadas por estos modelos, se hicieron varias observaciones.
+
 - Los modelos SARIMAX requerían ajustes manuales, lo que resultaba un proceso lento y desafiante, exigiendo un profundo entendimiento tanto del problema como del modelo. Además, los modelos SARIMAX tenían suposiciones estrictas que podrían ser difíciles de cumplir con los datos de demanda eléctrica disponibles.
 - El modelo Prophet, un paquete popular desarrollado por Facebook, demostró ser efectivo para este tipo de problema. Agrega información estacional durante su entrenamiento. El modelo puede ajustarse manualmente, pero no es necesario para obtener un rendimiento aceptable. También es capaz de modelar la incertidumbre en los datos.
 - Extreme Gradient Boosting, un algoritmo de aprendizaje automático en conjunto utilizado para regresión, también se consideró ya que puede establecer relaciones entre variables de entrada y salida, sin requerir restricciones estrictas en los datos.

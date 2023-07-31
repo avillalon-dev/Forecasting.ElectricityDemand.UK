@@ -46,7 +46,9 @@ To address the problem, a time-series forecasting approach was employed. Various
 - Ensemble regression models: Extreme Gradient Boosting (XGB).
 - Generalized additive models: Prophet.
 - Neural networks: Gaussian Multilayer Perceptron (GMLP).
+
 Each model's assumptions and relevance to the problem were considered. After studying the solutions provided by these models, several observations were made.
+
 - SARIMAX models required manual tuning, which was a time-consuming and challenging process, demanding a deep understanding of both the problem and the model. Additionally, SARIMAX models had strict assumptions that could be difficult to guarantee with the available electricity demand data.
 - Prophet model, a popular package developed by Facebook, proved to be effective for this type of problem. It adds seasonal information during its training. The model can be manually tune, but it is not necessary to get an acceptable performance. It is also capable of modeling uncertainty in the data. 
 - Extreme Gradient Boosting, an ensemble machine learning algorithm used for regression, was also considered as it could establish relationships between input and output variables, without requiring strict constraints on the data. 
