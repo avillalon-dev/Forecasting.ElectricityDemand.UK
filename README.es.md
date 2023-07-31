@@ -2,6 +2,8 @@
 [![en](https://img.shields.io/badge/lang-en-red.svg)](https://github.com/avillalon-dev/Forecasting.ElectricityDemand.UK/blob/master/README.md)
 [![es](https://img.shields.io/badge/lang-es-blue.svg)](https://github.com/avillalon-dev/Forecasting.ElectricityDemand.UK/blob/master/README.es.md)
 
+![Problem](images/edf_ts.png)
+
 ## Tabla de Contenidos
 1. [Resumen del Proyecto](#resumen-del-proyecto)
 2. [Descripción de los Datos](#descripcion-de-los-datos)
