@@ -230,6 +230,9 @@ class DataLoader:
         # Save dataframe with no missing values
         df_energy.to_csv(self.data_path + no_missing_filename, index=False)
     
+    def save_data(self, filename: str, df_data: pd.DataFrame) -> None:
+        df_data.to_csv(self.data_path + filename, index=False)
+        
     #region Utilities
     
     def convert_to_time_string(time_period):

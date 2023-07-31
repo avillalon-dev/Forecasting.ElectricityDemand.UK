@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 import plotly.graph_objects as go
 import seaborn as sns
 import pandas as pd
+import numpy as np
 from datetime import datetime
 
 def plot_variables(data: pd.DataFrame, features: list, start_date: datetime, end_date: datetime):
@@ -113,7 +114,8 @@ def plot_seasonal_day_week(data: pd.DataFrame):
     plt.ylabel('Demand (MW)')
     plt.figure(figsize=(15,5))
     sns.boxplot(data, x='date_weekday', y='tsd', hue='date_isweekend')
-    plt.xlabel('Weedays')
+    plt.xticks(ticks=np.sort(data['date_weekday'].unique()), labels=["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"])
+    plt.xlabel('Days of the week')
     plt.ylabel('Demand (MW)')
     plt.figure(figsize=(15,5))
     sns.boxplot(data, x='date_isweekend', y='tsd', hue='date_isholiday')
@@ -156,15 +158,15 @@ def plot_seasonal_month_year(data: pd.DataFrame):
     plt.xlabel('Year')
     plt.ylabel('Demand (MW)')
     
-def plot_weather_demand(data, weather_features):    
+def plot_features_demand(data: pd.DataFrame, features: list):    
     # Create subplots
-    fig, axes = plt.subplots(nrows=len(weather_features), ncols=1, figsize=(10, 2*len(weather_features)))
+    fig, axes = plt.subplots(nrows=len(features), ncols=1, figsize=(10, 2*len(features)))
 
     # Iterate over each column (excluding the 'date' column)
-    for i, column in enumerate(weather_features):
+    for i, column in enumerate(features):
         # Set the current subplot
         ax = axes[i]
-        # Plot the variable against the date
+        # Plot the feature against the demand
         ax.scatter(data[column], data['tsd'], marker='o')
         # Set the title and labels for each subplot
         # ax.set_title(column)
