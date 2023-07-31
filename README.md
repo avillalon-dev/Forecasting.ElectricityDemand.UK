@@ -1,9 +1,11 @@
 # UK Electricity Demand Forecasting Project
+[![en](https://img.shields.io/badge/lang-en-red.svg)](https://github.com/avillalon-dev/Forecasting.ElectricityDemand.UK/blob/master/README.md)
+[![es](https://img.shields.io/badge/lang-es-blue.svg)](https://github.com/jonatasemidio/multilanguage-readme-pattern/blob/master/README.es.md)
 
 ## Table of Contents
 1. [Project Overview](#project-overview)
 2. [Data Description](#data-description)
-3. [Methods and Models](#methods-and-models)
+3. [Forecasting Models](#forecasting-models)
 4. [Evaluation Metrics](#evaluation-metrics)
 5. [Results and Insights](#results-and-insights)
 6. [Conclusion](#conclusion)
@@ -38,7 +40,7 @@ Dataset Composition:
 - Total number of half-hour period electricity demand observations: 250 942
 - Total number of daily weather observations: 5 479
 
-## 3. Forecasting Models <a name="methods-and-models"></a>
+## 3. Forecasting Models <a name="forecasting-models"></a>
 To address the problem, a time-series forecasting approach was employed. Various models were considered, including:
 - Seasonal auto-regressive models: SARIMAX.
 - Ensemble regression models: Extreme Gradient Boosting (XGB).
