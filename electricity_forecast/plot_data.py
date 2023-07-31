@@ -15,7 +15,7 @@ def plot_variables(data: pd.DataFrame, features: list, start_date: datetime, end
     for i, column in enumerate(features):
         if 'date' not in column:
             # Set the current subplot
-            ax = axes[i-2]
+            ax = axes[i]
             # Plot the variable against the date
             ax.scatter(data.loc[idx, 'datetime'], data.loc[idx, column], marker='o')
             # Set the title and labels for each subplot
@@ -155,3 +155,22 @@ def plot_seasonal_month_year(data: pd.DataFrame):
     sns.boxplot(data, x='date_year', y='tsd')
     plt.xlabel('Year')
     plt.ylabel('Demand (MW)')
+    
+def plot_weather_demand(data, weather_features):    
+    # Create subplots
+    fig, axes = plt.subplots(nrows=len(weather_features), ncols=1, figsize=(10, 2*len(weather_features)))
+
+    # Iterate over each column (excluding the 'date' column)
+    for i, column in enumerate(weather_features):
+        # Set the current subplot
+        ax = axes[i]
+        # Plot the variable against the date
+        ax.scatter(data[column], data['tsd'], marker='o')
+        # Set the title and labels for each subplot
+        # ax.set_title(column)
+        ax.set_xlabel(column)
+        ax.set_ylabel('Demand (MW)')
+    # Adjust the spacing between subplots
+    plt.tight_layout()
+    # Show the plot
+    plt.show()

@@ -1,13 +1,20 @@
 import pandas as pd
+import numpy as np
 import os
 from typing import Literal
 import holidays
 
+# Packages for preprocessing
+from sklearn.preprocessing import LabelEncoder
+
 class DataLoader:
     def __init__(self, data_path):
         self.data_path = os.path.dirname(data_path) + '/'
+        # self.electricity_filename
+        # self.weather_filename
+        # self.time_filename
 
-    def load_data(self, set: Literal['original', 'formatted', 'preprocessed']) -> tuple[pd.DataFrame, pd.DataFrame] | tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
+    def load_data(self, set: Literal['original', 'formatted', 'no_missing', 'preprocessed']) -> tuple[pd.DataFrame, pd.DataFrame] | tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
         # Implement code to load the historical demand data from the specified path
         # Preprocess the data (e.g., handle missing values, normalize, etc.)
         # Return the preprocessed data
@@ -17,6 +24,14 @@ class DataLoader:
             return df_electricity, df_weather
         if set == 'formatted':
             df_electricity = pd.read_csv(self.data_path + 'historic_demand_2009_2023_formatted.csv')
+            df_electricity['datetime'] = pd.to_datetime(df_electricity['datetime'])
+            df_weather = pd.read_csv(self.data_path + 'weather_2009_2023_formatted.csv')
+            df_weather['datetime'] = pd.to_datetime(df_weather['datetime'])
+            df_datetime = pd.read_csv(self.data_path + 'time_2009_2023.csv')
+            df_datetime['datetime'] = pd.to_datetime(df_datetime['datetime'])
+            return df_electricity, df_weather, df_datetime
+        if set == 'no_missing':
+            df_electricity = pd.read_csv(self.data_path + 'historic_demand_2009_2023_formatted_no_missing.csv')
             df_electricity['datetime'] = pd.to_datetime(df_electricity['datetime'])
             df_weather = pd.read_csv(self.data_path + 'weather_2009_2023_formatted.csv')
             df_weather['datetime'] = pd.to_datetime(df_weather['datetime'])
@@ -166,6 +181,7 @@ class DataLoader:
         
         # Specify electricity file name
         filename = 'historic_demand_2009_2023_formatted.csv'
+        time_filename = 'time_2009_2023.csv'
         no_missing_filename = os.path.splitext(filename)[0] + '_no_missing.csv' 
         if os.path.isfile(self.data_path + no_missing_filename):
             return # Return if data is already processed   
@@ -176,11 +192,43 @@ class DataLoader:
         df_energy = pd.read_csv(self.data_path + filename) # electricity demand
         
         if mode == 'fill':
+            # Fill values 
+            df_energy['nd'].ffill(inplace=True)
+            df_energy.fillna(0, inplace=True)
+            # Load time data into a pandas DataFrame
+            assert os.path.isfile(self.data_path + time_filename), 'Time features file does not exist.'
+            df_datetime = pd.read_csv(self.data_path + time_filename)
+            assert len(df_datetime.columns) > 3, 'No time features extracted'
+            # Convert the date column to datetime format
+            df_energy['datetime'] = pd.to_datetime(df_energy['datetime'])
+            df_datetime['datetime'] = pd.to_datetime(df_datetime['datetime'])
+            df_energy_time = pd.merge(df_datetime, df_energy[['datetime', 'nd', 'tsd']], on='datetime', how='left')  
+            # Missing values dataframe
+            df_missing = df_energy.loc[(df_energy['tsd'] == 0)]
+            df_energy_without_missing = df_energy.loc[df_energy['tsd'] > 0]
+            if len(df_missing.index) > 0:
+                df_energy_without_missing['nd_tsd_diff'] = df_energy_without_missing['tsd'] - df_energy_without_missing['nd']
+                hierarchy_dates = ['date_year', 'date_month', 'date_weekday', 'date_period']
+                hierarchy_filler = df_energy_without_missing.groupby(hierarchy_dates).mean()
+                for missing_index in df_missing.index:
+                    missing_value = df_energy.iloc[missing_index, :]
+                    hierarchy_values = missing_value[hierarchy_dates]
+                    fill_value = np.ceil(missing_value['nd'] + hierarchy_filler.loc[tuple(hierarchy_values), 'nd_tsd_diff']) # Overestimate demand
+                    df_energy['tsd'].iloc[missing_index] = fill_value
+                    
+            # Save data
+            # saved_variables = [name for name in df_energy.columns if ('date' in name) or ('nd' == name) or ('tsd' == name)]
+            # df_energy = df_energy[saved_variables]
+            # df_energy.to_csv(save_dir + os.path.splitext(os.path.split(path)[-1])[0] + '_no_missing.csv', index=False)
+                    
             return
         if mode == 'remove_day':
             raise 'Not implemented'
         if mode == 'remove_time':
-            raise 'Not implemented'
+            df_energy.fillna(0, inplace=True)
+            df_energy = df_energy.loc[~(df_energy['tsd'] == 0)]
+        # Save dataframe with no missing values
+        df_energy.to_csv(self.data_path + no_missing_filename, index=False)
     
     #region Utilities
     
