@@ -176,3 +176,25 @@ def plot_features_demand(data: pd.DataFrame, features: list):
     plt.tight_layout()
     # Show the plot
     plt.show()
+    
+def plot_timeseries_split(data: pd.DataFrame, ts_splitter, threshold_date):
+    fig, axes = plt.subplots(5, 1, figsize=(15, 15), sharex=True)
+    df_cv = data.copy()
+    df_cv.set_index('datetime', inplace=True)
+    fold = 0
+    for train_index, test_index in ts_splitter.split(df_cv[df_cv.index < threshold_date]):
+        train = df_cv.iloc[train_index]
+        test = df_cv.iloc[test_index]
+
+        train["tsd"].plot(
+            ax=axes[fold], label="Training set", title=f"Data Train-test split fold {fold}",
+        )
+        test["tsd"].plot(ax=axes[fold], label="Test set")
+        axes[fold].axvline(test.index.min(), color="k", ls="--")
+        axes[fold].legend(loc="center", bbox_to_anchor=(1.075, 0.5))
+
+        axes[fold].set_title("Prediction on test set - week")
+        axes[fold].set_ylabel("Energy Demand (MW)")
+        axes[fold].set_xlabel("Timestamp")
+        fold += 1
+    plt.show()
