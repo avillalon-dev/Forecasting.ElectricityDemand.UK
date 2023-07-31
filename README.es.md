@@ -53,7 +53,8 @@ Se tuvieron en cuenta las suposiciones de cada modelo y su relevancia para el pr
 - El modelo Prophet, un paquete popular desarrollado por Facebook, demostró ser efectivo para este tipo de problema. Agrega información estacional durante su entrenamiento. El modelo puede ajustarse manualmente, pero no es necesario para obtener un rendimiento aceptable. También es capaz de modelar la incertidumbre en los datos.
 - Extreme Gradient Boosting, un algoritmo de aprendizaje automático en conjunto utilizado para regresión, también se consideró ya que puede establecer relaciones entre variables de entrada y salida, sin requerir restricciones estrictas en los datos.
 - Las redes neuronales son reconocidas por su capacidad para modelar relaciones complejas y no lineales en los datos. Además, un perceptrón multicapa gaussiano es capaz de manejar la incertidumbre en los datos.
-Basado en estos hallazgos, el modelo SARIMAX se descartó para un análisis posterior.
+
+Basado en el análsis anterior, el modelo SARIMAX se descartó para un análisis posterior.
 
 ## 4. Métricas de Evaluación <a name="metricas-de-evaluacion"></a>
 Se evaluaron los modelos utilizando diversas métricas, incluidas:

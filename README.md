@@ -53,6 +53,7 @@ Each model's assumptions and relevance to the problem were considered. After stu
 - Prophet model, a popular package developed by Facebook, proved to be effective for this type of problem. It adds seasonal information during its training. The model can be manually tune, but it is not necessary to get an acceptable performance. It is also capable of modeling uncertainty in the data. 
 - Extreme Gradient Boosting, an ensemble machine learning algorithm used for regression, was also considered as it could establish relationships between input and output variables, without requiring strict constraints on the data. 
 - Neural networks are recognized for their ability to model complex and non-linear relationships in the data. Additionally, a gaussian multilayer perceptron is able to handle the uncertainty in the data.
+
 Based on these findings, the SARIMAX model was discarded from further analysis.
 
 ## 4. Evaluation Metrics <a name="evaluation-metrics"></a>
