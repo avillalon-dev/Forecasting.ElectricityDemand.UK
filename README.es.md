@@ -69,7 +69,7 @@ Se evaluaron los modelos utilizando diversas métricas, incluidas:
 El mejor modelo fue seleccionado en función de los valores generales más bajos de las métricas y de los residuos distribuidos normalmente.
 
 ## 5. Resultados e Ideas Clave <a name="resultados-e-ideas-clave"></a>
-Se proporcionaron gráficos de predicción para el pronóstico de la demanda eléctrica del último año en los datos. Se encontró que los modelos puramente estacionales eran insuficientes, y se requirieron modelos de regresión para modelar las relaciones meteorológicas. Se encontraron desafíos al ajustar la demanda durante el verano. También se discutieron otros desafíos relacionados con este problema.
+Se proporcionaron gráficos de predicción para el pronóstico de la demanda eléctrica del último año en los datos. Se encontró que los modelos puramente estacionales eran insuficientes, y se requirieron modelos de regresión para modelar las relaciones meteorológicas. Se encontraron desafíos al ajustar la demanda durante el verano. También se discutieron otros desafíos relacionados con este problema. Puede encontrar más detalles [aquí](forecast_electricity_demand.html).
 
 ![Output](images/forecast_2023.png)
 

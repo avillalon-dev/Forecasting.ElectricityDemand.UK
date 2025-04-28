@@ -69,7 +69,7 @@ The models were evaluated using various metrics, including:
 The best model was selected based on lower overall metric values and normally distributed residuals.
 
 ## 5. Results and Insights <a name="results-and-insights"></a>
-Prediction plots for electricity demand forecast from the last year in the data were provided. It was found that purely seasonal models were insufficient, and regression models were necessary to model weather relationships. Challenges were encountered in fitting the demand during summer. Other challenges were discussed related to this problem.
+Prediction plots for electricity demand forecast from the last year in the data were provided. It was found that purely seasonal models were insufficient, and regression models were necessary to model weather relationships. Challenges were encountered in fitting the demand during summer. Other challenges were discussed related to this problem. More information can be found [here](forecast_electricity_demand.html).
 
 ![Output](images/forecast_2023.png)
 
