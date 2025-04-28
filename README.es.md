@@ -23,7 +23,7 @@ Los valores faltantes se completaron y las características estacionales cíclic
 
 ### Datos de Demanda Eléctrica:
 | Variable          | Descripción                        |
-|-------------------|------------------------------------|
+|------------------|-----------------------------------|
 | settlement_date   | Fecha y hora de la observación      |
 | settlement_period | Media hora de la observación       |
 | tsd               | Demanda eléctrica en megavatios    |
@@ -31,7 +31,7 @@ Los valores faltantes se completaron y las características estacionales cíclic
 
 ### Datos Meteorológicos:
 | Variable          | Descripción                        |
-|-------------------|------------------------------------|
+|------------------|-----------------------------------|
 | datetime          | Fecha y hora de la observación      |
 | temp              | Temperatura promedio diaria        |
 | humidity          | Humedad                            |

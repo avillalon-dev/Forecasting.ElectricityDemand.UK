@@ -23,7 +23,7 @@ Missing values were filled, and cyclical seasonal features were transformed usin
 
 ### Electricity Demand Data:
 | Variable          | Description                         |
-|-------------------|-------------------------------------|
+|------------------|------------------------------------|
 | settlement_date   | Timestamp of the observation        |
 | settlement_period | Half hour of the observation        |
 | tsd               | Electricity demand in megawatts     |
@@ -31,7 +31,7 @@ Missing values were filled, and cyclical seasonal features were transformed usin
 
 ### Weather Data:
 | Variable    | Description                         |
-|-------------|-------------------------------------|
+|------------|------------------------------------|
 | datetime    | Timestamp of the observation        |
 | temp        | Average daily temperature           |
 | humidity    | Humidity                            |
