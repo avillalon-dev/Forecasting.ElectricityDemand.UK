@@ -22,21 +22,21 @@ The dataset consists of two separate files: one for electricity demand data and 
 Missing values were filled, and cyclical seasonal features were transformed using sine and cosine functions.Adicionally, one more file was created to store only time features.
 
 ### Electricity Demand Data:
-| Variable          | Description                       |
-|-------------------|-----------------------------------|
-| settlement_date   | Timestamp of the observation      |
-| settlement_period | Half hour of the observation      |
-| tsd               | Electricity demand in megawatts   |
-| ...               | Other relevant variables          |
+| Variable          | Description                         |
+|-------------------|-------------------------------------|
+| settlement_date   | Timestamp of the observation        |
+| settlement_period | Half hour of the observation        |
+| tsd               | Electricity demand in megawatts     |
+| ...               | Other relevant variables            |
 
 ### Weather Data:
-| Variable          | Description                       |
-|-------------------|-----------------------------------|
-| datetime          | Timestamp of the observation      |
-| temp              | Average daily temperature         |
-| humidity          | Humidity                          |
-| windspeed         | Windspeed                         |
-| ...               | Other relevant weather variables  |
+| Variable    | Description                         |
+|-------------|-------------------------------------|
+| datetime    | Timestamp of the observation        |
+| temp        | Average daily temperature           |
+| humidity    | Humidity                            |
+| windspeed   | Windspeed                           |
+| ...         | Other relevant weather variables    |
 
 Dataset Composition:
 - Total number of half-hour period electricity demand observations: 250 942
