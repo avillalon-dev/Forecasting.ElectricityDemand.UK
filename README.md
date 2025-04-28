@@ -64,7 +64,9 @@ The models were evaluated using various metrics, including:
 The best model was selected based on lower overall metric values and normally distributed residuals.
 
 ## 5. Results and Insights <a name="results-and-insights"></a>
-A bar plot was created to evaluate the models according to the stated metrics. Prediction plots for electricity demand forecast from the last year in the data were provided. It was found that purely seasonal models were insufficient, and regression models were necessary to model weather relationships. Challenges were encountered in fitting the demand during summer. Other challenges were discussed related to this problem.
+Prediction plots for electricity demand forecast from the last year in the data were provided. It was found that purely seasonal models were insufficient, and regression models were necessary to model weather relationships. Challenges were encountered in fitting the demand during summer. Other challenges were discussed related to this problem. More information can be found [here](forecast_electricity_demand.html).
+
+![Output](images/forecast_2023.png)
 
 ## 6. Conclusion <a name="conclusion"></a>
 In conclusion, this notebook presents the results and findings of the UK electricity demand forecasting project. Through comprehensive analysis and experimentation, the project confirmed that accounting for seasonal features and weather information is crucial to minimize forecasting errors in electricity demand. Models that considered these factors showed improved performance compared to purely seasonal models. After thorough evaluation, the GMLP model emerged as the best performer among the considered models. It exhibited the lowest values for key evaluation metrics, produced normally distributed residuals, and efficiently handled uncertainty. These characteristics solidify the GMLP model as the preferred choice for accurate electricity demand forecasting.
